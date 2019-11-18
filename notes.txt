@@ -1,0 +1,182 @@
+NOTES
+--------------------------------------------------------------------------------
+COLLECTIONS AND STRING APIs
+STRINGS
+
+
+
+
+FUNCTIONS & METHODS
+In Ruby, Every function has a method it belongs to, even if it isn't written in a
+way that implies that.
+
+Parentheses are optional in Ruby methods
+
+`def simple
+  puts "no parens"
+end
+
+def simple1()
+  puts "yes parens"
+end
+
+simple()
+simple
+simple1`
+
+There is no need to declare type of parameters
+You can return any type of value
+return keyword is optional. The last executed line is returned
+
+`def add(one, two)
+  one + two
+end
+
+def divide(one, two)
+  return "I don't think so" if two == 0
+  one / two
+end
+
+puts add(2, 2)
+puts divide(2,0)
+puts divide(12, 4)`
+
+
+Ruby methods can end with '?' (usually indicates booleans) and '!'
+(usually indicates dangerous side-effects)
+
+`def can_divide_by?(number)
+  return false if number.zero?
+  true
+end
+
+puts can_divide_by? 3
+puts can_divide_by? 0`
+
+
+Default arguments are used if no argument is passed to the method
+`def factorial (n)
+  n == 0? 1 : n * factorial(n - 1)
+end
+
+def factorial_with_default (n = 5)
+  n == 0? 1 : n * factorial_with_default(n - 1)
+end
+
+puts factorial 5
+puts factorial_with_default
+puts factorial_with_default(3)`
+
+
+
+* prefixes parameter inside method definition.
+    Used to allow infinite number of values passed in. Treats them like an array
+
+`def max(one_param, *numbers, another)
+  # Variable length parameters passed in
+  # become an array
+  numbers.max
+end
+
+puts max("something", 7, 32, -4, "more")`
+
+
+
+BLOCKS
+Blocks are chunks of code that you can pass into methods
+    Enclosed by curly braces {} when block is single line
+    or key words do and end when it spans multiple lines
+
+Blocks can accept parameters between ||s
+
+`1.times { puts "Hello world!"}
+
+2.times do |index|
+  if index > 0
+    puts index
+  end
+end
+
+2.times { |index| puts index if index > 0 }`
+
+There are 2 ways to configure a block in your methods
+
+Implicit
+    Use block_given? to see if block was passed in
+    Use yield to call the block
+    **NEED TO CHECK THAT BLOCK WAS GIVEN FIRST OR EXCEPTION WILL BE THROWN**
+
+Explicit
+    Use & in front of the last parameter
+    Use call method to call the block
+
+`# Implicit block call
+def two_times_implicit
+  return "No block" unless block_given?
+  yield
+  yield
+end
+
+puts two_times_implicit { print "Hello "}
+
+puts two_times_implicit
+
+
+#Explicit block call
+def two_times_explicit (&i_am_a_block)
+  return "No block" if i_am_a_block.nil?
+  i_am_a_block.call
+  i_am_a_block.call
+end
+
+puts two_times_explicit
+two_times_explicit {puts "Hello"}`
+
+FILES & ENVIRONMENT VARIABLES
+
+Files are automatically closed at the end of a block
+
+read from Files using the File class and its methods,
+i.e. File.foreach(name_of_file.txt) do |line|
+  # instructions
+end
+
+`File.foreach( 'test.txt' ) do |line|
+  puts line
+  p line
+  p line.chomp # chops off newline character
+  p line.split # array of words in line
+end`
+
+It is wise to set up exception handling (rescuing) for your file instructions
+`begin
+
+  File.foreach( 'do_not_exist.txt' ) do |line|
+    puts line.chomp
+  end
+
+rescue Exception => e
+  puts e.message
+  puts "Let's pretend this didn't happen..."
+end
+`
+
+Writing to files can be as simple as opening a file and using puts
+`File.open("test1.txt", "w") do |file|
+  file.puts "One line"
+  file.puts "Another"
+end`
+
+Revisit Module 1 to learn how to set up environment variables on your system.
+It is a different process for different OSes
+
+`puts ENV["EDITOR"]
+`
+
+
+
+Case Expressions
+two "flavors"
+1. Similar to a series of "if" statements
+2. Specify a target next to case and each when clause is compared to target
+Only 1 case gets executed
