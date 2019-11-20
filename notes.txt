@@ -2,6 +2,52 @@ NOTES
 --------------------------------------------------------------------------------
 COLLECTIONS AND STRING APIs
 STRINGS
+Single quote strings in Ruby show almost everything as-is.
+    Allow escaping with ` and \
+
+Double-quoted strings allow string interpolation
+    (No need to concatenate strings with +)
+    Also interpret special characters like \n
+
+def multiply (one, two)
+  "#{one} multiplied by {two} equals #{one * two}"
+end
+  puts multiply(5, 3)
+
+String methods ending with ! modify the existing string
+    Most others just return a new string
+
+%Q{long_multiline_string} allows similar behavior to double quoted string
+
+`my_name = " tim"
+puts my_name.lstrip.capitalize
+p my_name
+my_name.lstrip! # (destructive) removes the leading space
+my_name[0] = 'K' # replace the first character
+puts my_name
+
+cur_weather = %Q{It's a hot day outside
+                 Grab your umbrellas...}
+
+cur_weather.lines do |line|
+  line.sub! 'hot', 'rainy' # substitute 'hot' with 'rainy'
+  puts "#{line.strip}"
+end`
+
+Strings API will show you all available methods for strings
+ruby-doc.org/core-your.version.number/String.html
+
+Symbols are a type of highly optimized string that "stand for something"
+written as :symbol-name
+They are constant names that you don't have to pre-declare
+Symbols are guaranteed to be unique and immutable
+You can convert them to strings by using to_s
+or back by using to_sym
+
+Method names are often written as symbols
+`[:casecmp, :casecmp?, :downcase, :upcase, :swapcase, :upcase!, :downcase!, :swapcase!]`
+
+
 
 
 
