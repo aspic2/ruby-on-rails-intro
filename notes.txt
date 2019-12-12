@@ -1,5 +1,14 @@
 NOTES
 --------------------------------------------------------------------------------
+RANGES
+Used to express natural consecutive sequences (numbers, alphabet, etc)
+1..20    'a'.. 'z'
+If there are two dots in between the ranges, it is all inclusive.
+Three dots means end-exclusive
+
+Ranges are efficient, since you only store the start and end numbers
+They can be converted to arrays with to_a
+
 ARRAYS
 Arrays are a collection of object references.
 They are auto-expandable

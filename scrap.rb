@@ -1,13 +1,14 @@
-a = [1, 3, 4, 7, 8, 10]
-a.each { |num| print num }
-puts
+some_range = 1..3
+puts some_range.max
+puts some_range.include?
 
-new_arr = a.select { |num| num > 4 }
-p new_arr
-new_arr = a.select { |num| num < 10 }
-           .reject{ |num| num.even? }
-p new_arr
+puts (1...10) === 5.3
+puts ('a'...'r') === "r"
 
-# Multiply each element by 3 producing new array
-new_arr = a.map {|x| x * 3}
-p new_arr
+p ('k'..'z').to_a.sample(2)
+
+age = 55
+case age
+when 0..12 then puts "Still a baby"
+when 13..99 then puts "Teenager at heart!"
+else puts "You are getting older..."
