@@ -1,5 +1,73 @@
 NOTES
 --------------------------------------------------------------------------------
+HASHES
+Indexed collections of object references
+created with {} or Hash.new
+the Indexes are essentially keys
+
+`editor_props = {"font" => "Arial", "size" => 12, "color" => "red"}
+
+#THE ABOVE IS NOT A BLOCK - IT'S A HASH
+puts editor_props.length
+puts editor_props["font"]
+
+editor_props["background"] = "Blue"
+editor_props.each_pair do |key, value|
+  puts "Key: #{key} value: #{value}"
+end`
+
+
+Set hash values with => when creating the hash.
+Use [] to edit an already created hash
+
+
+
+`word_frequency = Hash.new(0)
+
+sentence = "Chicka chicka boom boom"
+sentence.split.each do |word|
+  word_frequency[word.downcase] += 1
+end
+
+p word_frequency`
+
+In Ruby, hash items stay in the same order they were added.
+If you use symbols as your keys, you can use symbol: syntax
+
+If a Hash is the last argument to a method, {} are optional
+`family_tree_19 = {oldest: "Jim", older: "Joe", younger: "Jack"}
+family_tree_19[:youngest] = "Jeremy"
+p family_tree_19
+
+#Named parameter "like" behavior...
+def adjust_colors (props = {foreground: "red", background: "white"})
+  puts "Foreground: #{props[:foreground]}" if props[:foreground]
+  puts "Background: #{props[:background]}" if props[:background]
+end
+adjust_colors
+
+adjust_colors ({:foreground => "green"})
+adjust_colors background: "yella"
+adjust_colors :background => "magenta"`
+
+`# Let's say you have a Hash
+a_hash = { :one => "one" }
+
+# Then, you output it
+puts a_hash
+
+# if you try to do it in one step, you get a SyntaxError
+# puts { :one => "one" }
+
+# RUBY GETS CONFUSED AND THINKS {} IS A BLOCK!!!
+
+# To get around this, you can use parens
+puts ({ :one => "one" })
+
+#Or drop the {} altogether
+puts one: "one"`
+
+
 RANGES
 Used to express natural consecutive sequences (numbers, alphabet, etc)
 1..20    'a'.. 'z'
@@ -8,6 +76,22 @@ Three dots means end-exclusive
 
 Ranges are efficient, since you only store the start and end numbers
 They can be converted to arrays with to_a
+
+some_range = 1..3
+puts some_range.max
+puts some_range.include?
+
+puts (1...10) === 5.3
+puts ('a'...'r') === "r"
+
+p ('k'..'z').to_a.sample(2)
+
+age = 55
+case age
+when 0..12 then puts "Still a baby"
+when 13..99 then puts "Teenager at heart!"
+else puts "You are getting older..."
+
 
 ARRAYS
 Arrays are a collection of object references.

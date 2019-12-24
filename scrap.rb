@@ -1,14 +1,32 @@
-some_range = 1..3
-puts some_range.max
-puts some_range.include?
+family_tree_19 = {oldest: "Jim", older: "Joe", younger: "Jack"}
+family_tree_19[:youngest] = "Jeremy"
+p family_tree_19
 
-puts (1...10) === 5.3
-puts ('a'...'r') === "r"
+#Named parameter "like" behavior...
+def adjust_colors (props = {foreground: "red", background: "white"})
+  puts "Foreground: #{props[:foreground]}" if props[:foreground]
+  puts "Background: #{props[:background]}" if props[:background]
+end
+adjust_colors
 
-p ('k'..'z').to_a.sample(2)
+adjust_colors ({:foreground => "green"})
+adjust_colors background: "yella"
+adjust_colors :background => "magenta"
 
-age = 55
-case age
-when 0..12 then puts "Still a baby"
-when 13..99 then puts "Teenager at heart!"
-else puts "You are getting older..."
+
+# Let's say you have a Hash
+a_hash = { :one => "one" }
+
+# Then, you output it
+puts a_hash
+
+# if you try to do it in one step, you get a SyntaxError
+# puts { :one => "one" }
+
+# RUBY GETS CONFUSED AND THINKS {} IS A BLOCK!!!
+
+# To get around this, you can use parens
+puts ({ :one => "one" })
+
+#Or drop the {} altogether
+puts one: "one"
