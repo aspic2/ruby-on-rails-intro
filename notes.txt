@@ -1,5 +1,73 @@
 NOTES
 --------------------------------------------------------------------------------
+
+---------------------------------------
+OBJECT ORIENTED RUBY
+---------------------------------------
+In OOP, you identify "things" that your program is dealing with
+You create Classes of those things
+Objects will be instances of those things
+Objects contain instance variables, or state
+
+Instance variables begin with @
+They are not declared. They come into existences when first used
+They are available to all instance methods of the class
+
+Objects are created by calling the "new" method of a class
+The objects state should be initialized inside the "initialize method"
+
+Instance variables are private to the class and cannot be accessed from outside
+But Methods have public access by default
+You can define getter and setter methods to access instance variables
+
+`class Person
+  def initialize (name, age) # "CONSTRUCTOR"
+    @name = name
+    @age = age
+  end
+  def get_info
+    @additional_info = "Interesting"
+    "Name: #{@name}, age: #{@age}"
+  end
+end
+
+person1 = Person.new("Joe", 14)
+p person1.instance_variables
+puts person1.get_info
+p person1.instance_variables
+person1.name = "Mike"
+puts person1.name
+# puts person1.age # undefined mehtod `age` for #<Person`
+
+You can use attr_* form to get and set attributes
+attr_accessor creates getter and setter methods
+attr_reader creates a getter only
+attr_writer creates a setter only
+
+`class Person
+  attr_accessor :name, :age
+end
+
+person1 = Person.new
+p person1.name
+person1.name = "Mike"
+person1.age = 15
+puts person1.name
+puts person1.age
+person1.age = "fifteen"
+puts person1.age
+`
+
+Inside instance methods, self refers to the object itself
+Usually Unneccesary for calling other methods of the same instance
+Outside of an instance method, self refers to the class
+
+
+
+
+
+
+
 HASHES
 Indexed collections of object references
 created with {} or Hash.new

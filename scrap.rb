@@ -1,32 +1,18 @@
-family_tree_19 = {oldest: "Jim", older: "Joe", younger: "Jack"}
-family_tree_19[:youngest] = "Jeremy"
-p family_tree_19
+class Person
+  attr_reader :age
+  attr_accessor :name
 
-#Named parameter "like" behavior...
-def adjust_colors (props = {foreground: "red", background: "white"})
-  puts "Foreground: #{props[:foreground]}" if props[:foreground]
-  puts "Background: #{props[:background]}" if props[:background]
+  def initialize (name, ageVar)
+    @name = name
+    self.age = ageVar
+    puts age
+  end
+  def age= (new_age)
+    @age = new_age unless new_age > 120
+  end
 end
-adjust_colors
 
-adjust_colors ({:foreground => "green"})
-adjust_colors background: "yella"
-adjust_colors :background => "magenta"
-
-
-# Let's say you have a Hash
-a_hash = { :one => "one" }
-
-# Then, you output it
-puts a_hash
-
-# if you try to do it in one step, you get a SyntaxError
-# puts { :one => "one" }
-
-# RUBY GETS CONFUSED AND THINKS {} IS A BLOCK!!!
-
-# To get around this, you can use parens
-puts ({ :one => "one" })
-
-#Or drop the {} altogether
-puts one: "one"
+person1 = Person.new("Kim", 13)
+puts "My age is #{person1.age}"
+person1.age = 130
+puts person1.age
