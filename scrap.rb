@@ -1,18 +1,18 @@
-class Person
-  attr_reader :age
-  attr_accessor :name
-
-  def initialize (name, ageVar)
-    @name = name
-    self.age = ageVar
-    puts age
+class Dog
+  def to_s
+    "Dog"
   end
-  def age= (new_age)
-    @age = new_age unless new_age > 120
+  def bark
+    "barks loudly"
+  end
+end
+class SmallDog < Dog
+  def bark
+    "barks quietly"
   end
 end
 
-person1 = Person.new("Kim", 13)
-puts "My age is #{person1.age}"
-person1.age = 130
-puts person1.age
+dog = Dog.new # (btw, new is a class method)
+small_dog = SmallDog.new
+puts "#{dog}1 #{dog.bark}"
+puts "#{small_dog}2 #{small_dog.bark}"
