@@ -4,6 +4,81 @@ NOTES
 ---------------------------------------
 OBJECT ORIENTED RUBY
 ---------------------------------------
+MODULES
+a module is a container for classes, methods, and constants (or other modules)
+
+is like a Class, but cannot be instantiated
+Class inherits from Module and adds new
+
+Modules are used for two purposes
+  - namespace
+  - mixins
+
+`module Sports
+  class Match
+    attr_accessor :score
+  end
+end
+
+module Patterns
+  class Match
+    attr_accessor :complete
+  end
+end
+
+match1 = Sports::Match.new
+match1.score = 45; puts match1.score
+
+match2 = Patterns::Match.new
+match2.complete = true; puts match2.complete
+`
+
+Interfaces in OO are a contract: define what a class _could_ do
+Mixins provide a way to share ready code among multiple classes
+
+`module SayMyName
+  attr_accessor :name
+  def print_name
+    puts "Name: #{@name}"
+  end
+end
+
+class Person
+  include SayMyName
+end
+class Company
+  include SayMyName
+end
+
+person = Person.new
+person.name = "Joe"
+person.print_name
+company = Company.new
+company.name = "Google & Microsoft LLC"
+company.print_name
+`
+
+The Enumerable module is used by Array class and many others
+all you must do is provide implementation for the each method
+
+`require_relative 'player' # in file player.rb
+require_relative 'team' # in file team.rb
+
+player1 = Player.new("Bob", 13, 5); player2 = Player.new("Jim", 15, 4.5)
+player3 = Player.new("Mike", 21, 5); player4 = Player.new("Joe", 14, 5)
+player5 = Player.new("Scott", 16, 3)
+
+red_team = Team.new("Red")
+red_team.add_players(player1, player2, player3, player4, player5) # (splat)
+
+# select only players between 14 and 20 and reject any player below 4.5 skill-level
+elig_players = red_team.select {|player| (14..20) === player.age}.reject{|player| player.skill_level < 4.5}
+
+puts elig_players
+`
+
+
+
 CLASS INHERITANCE
 || Operator evaluates the left side first
 if true, it returns the left side
