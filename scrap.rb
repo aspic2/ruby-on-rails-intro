@@ -1,14 +1,19 @@
-require_relative 'player'
-require_relative 'team'
+class Person
+  def initialize(age)
+    self.age = age # LEGAL - EXCEPTION
+    puts my_age
+    # puts self.my_age #ILLEGAL
+                       # CANNOT USE self or any other receiver
 
-player1 = Player.new("Bob", 13, 5); player2 = Player.new("Jim", 15, 4.5)
-player3 = Player.new("Mike", 21, 5); player4 = Player.new("Joe", 14, 5)
-player5 = Player.new("Scott", 16, 3)
+  end
 
-red_team = Team.new("Red")
-red_team.add_players(player1, player2, player3, player4, player5) # (splat)
+  private
+  def my_age
+    @age
+  end
+  def age=(age)
+    @age = age
+  end
+end
 
-# select only players between 14 and 20 and reject any player below 4.5 skill-level
-elig_players = red_team.select {|player| (14..20) === player.age}.reject{|player| player.skill_level < 4.5}
-
-puts elig_players
+Person.new(25)
