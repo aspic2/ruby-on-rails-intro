@@ -59,6 +59,31 @@ protected methods - can be invoked by the objects of the defining class or its s
 private methods - cannot be invoked with an explicit receiver
   Exception: setting an attribute can be invoked with an explicit receiver
 
+`class Person
+  def initialize(age)
+    self.age = age # LEGAL - EXCEPTION
+    puts my_age
+    # puts self.my_age #ILLEGAL
+                       # CANNOT USE self or any other receiver
+
+  end
+
+  private
+  def my_age
+    @age
+  end
+  def age=(age)
+    @age = age
+  end
+end
+
+Person.new(25)
+`
+
+public and private access controls are used the most
+private methods are not callable from outside or inside the class with an explicit receiver
+
+
 
 SCOPE
 Methods and Classes begin new scope variables.
