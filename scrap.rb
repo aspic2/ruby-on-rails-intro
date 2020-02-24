@@ -1,19 +1,14 @@
-class Person
-  def initialize(age)
-    self.age = age # LEGAL - EXCEPTION
-    puts my_age
-    # puts self.my_age #ILLEGAL
-                       # CANNOT USE self or any other receiver
+require 'test/unit'
+require_relative 'calculator'
 
+class CalculatorTest < Test::Unit::TestCase
+  def setup
+    @calc = Calculator.new('test')
   end
 
-  private
-  def my_age
-    @age
-  end
-  def age=(age)
-    @age = age
+  def test_divide_by_zero
+    assert_raise ZeroDivisionError do
+      @calc.divide(1, 0)
+    end
   end
 end
-
-Person.new(25)

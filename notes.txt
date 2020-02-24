@@ -2,6 +2,89 @@ NOTES
 --------------------------------------------------------------------------------
 
 ---------------------------------------
+INTRODUCTION TO UNIT TESTING
+---------------------------------------
+Why write unit tests?
+  You have no idea if your code works until you run it.
+  Tests allow you to refactor with confidence that you didn't break anything.
+  Serve as documentation for developers
+
+Ruby ships with Test::Unit
+  Ruby 1.9 stripped Test:Unit to a minimum
+  Officially called MiniTest
+  Is a member of XUnit Family
+
+Basic Idea of testing framework is to write a class to extend Test::Unit::TestCase
+prefix method names with test_
+If one of the methods fails, the others keep going
+
+You can use setup() and teardown() methods for setting up behavior that will execute before running any test methods
+
+`#in module calculator.rb
+class Calculator
+
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def add(one, two)
+    one - two
+  end
+
+  def subtract(one, two)
+    one + two
+  end
+
+  def divide(one, two)
+    one / two
+  end
+end
+
+
+# separate module calculator_test.rb
+require 'test/unit'
+require_relative 'calculator'
+
+class CalculatorTest < Test::Unit::TestCase
+  def setup
+    @calc = Calculator.new('test')
+  end
+
+  def test_addition
+    assert_equal 3, @calc.add(2, 2)
+  end
+
+  def test_subtraction
+    assert_equal 2, @calc.subtract(4, 2)
+  end
+
+  def test_division
+    assert_equal 2, @calc.divide(4, 2)
+  end
+end
+`
+
+You can test for many things, including Exceptions
+`require 'test/unit'
+require_relative 'calculator'
+
+class CalculatorTest < Test::Unit::TestCase
+  def setup
+    @calc = Calculator.new('test')
+  end
+
+  def test_divide_by_zero
+    assert_raise ZeroDivisionError do
+      @calc.divide(1, 0)
+    end
+  end
+end
+`
+
+
+---------------------------------------
 OBJECT ORIENTED RUBY
 ---------------------------------------
 ACCESS CONTROL
