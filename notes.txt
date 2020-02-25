@@ -4,6 +4,51 @@ NOTES
 ---------------------------------------
 INTRODUCTION TO UNIT TESTING
 ---------------------------------------
+INTRODUCTION TO RSPEC
+RSpec is more descriptive than Test::Unit
+Writing the test is more intuitive
+
+`rspec --init` creates everything you need to set up RSpec for your code project
+
+Main method in RSpec is describe()
+    set of related tests
+    takes either a string or Class as an argument
+    all specs must be inside a describe block
+    No class to subclass in RSpec, as opposed to Test::Unit
+      everything in describe()
+
+    there are before() and after() methods, similar to setup() and teardown()
+
+    In RSpec, you can pass in either :each or :all (infrequent) to specify whether
+    the block will run before/after each test, or once before/after all tests
+
+    before :all could be useful, if for example you only want to connect to a DB once
+
+    it() method defines the actual RSpec specifications/examples
+      Takes an optional string
+
+`# calculator_spec.rb
+
+require 'rspec'
+require_relative '../calculator'
+
+describe Calculator do
+  before { @calculator = Calculator.new('RSpec calculator')}
+
+  it "should add 2 numbers correctly" do
+    expect(@calculator.add(2, 2)).to eq 4
+  end
+
+  it "should subtract 2 numbers correctly" do
+    expect(@calculator.subtract(4, 2)).to eq 2
+  end
+end
+`
+RSpec makes testing more intuitive
+
+
+
+
 Why write unit tests?
   You have no idea if your code works until you run it.
   Tests allow you to refactor with confidence that you didn't break anything.
