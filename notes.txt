@@ -4,6 +4,26 @@ NOTES
 ---------------------------------------
 INTRODUCTION TO UNIT TESTING
 ---------------------------------------
+RSpec Matchers
+
+RSpec "hangs" to and not_to methods on all outcome of expectations
+
+to() and not_to() methods take one parameter: a matcher
+Matcher examples:
+    be_true
+    be_false
+    eq 3
+    raise_error(SomeError)
+
+If the object on which the test is operating has a predicate (boolean) method
+you automatically get a be_[predicate] matcher
+
+For example be_nil is a valid matcher since every Ruby object has a :nil? method
+
+RSpec has a lot of built in matchers readily available for simplifying writing tests.
+
+
+
 INTRODUCTION TO RSPEC
 RSpec is more descriptive than Test::Unit
 Writing the test is more intuitive
