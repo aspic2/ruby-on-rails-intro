@@ -1,5 +1,39 @@
 NOTES
 --------------------------------------------------------------------------------
+---------------------------------------
+INTRODUCTION TO RAILS
+---------------------------------------
+
+Rails is a framework for making dynamic web applications
+Many medium and large websites use Rails because they can rapidly prototype
+
+Convention Over Configuration
+  - Configure everything from Scratch or rely on best practices (convention)
+  - Less code to write with Convention
+    - some code rails auto generates
+    - often no need to write code at all
+  - Learn it once - know what to expect next time
+
+ Database Abstraction Layer
+   - no need to deal with database details
+   - ORM (Object Relational Mapping)
+
+ Agile friendly
+ DRY
+ Cross-platform
+ Open Source
+ Modular  (swap out components)
+
+ Rails Uses SQLite by default
+
+ Model View Controller (MVC)
+ software pattern for separation of concerns
+ Model - data the application is working with (business logic)
+ View - visual representation of data (maybe html, json)
+ Controller - orchestrates interaction between the model and the view
+
+Rails is good for rapid prototyping
+MVC and COC enable you to "think less and do more"
 
 ---------------------------------------
 INTRODUCTION TO UNIT TESTING
