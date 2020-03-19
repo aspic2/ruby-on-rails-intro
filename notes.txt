@@ -4,6 +4,34 @@ NOTES
 INTRODUCTION TO RAILS
 ---------------------------------------
 
+CREATE YOUR FIRST APPLICATION
+
+rails new [your_app_name]
+
+Version control your rails app
+Rails automatically generates .gitignore
+cd [your_app_name]
+git init
+git add
+git commit -m "Initial commit"
+
+Rails Directory structure
+ - app contains your controllers, views, models, and helpers
+ - config contains your configuration files (like which DB?)
+ - db contains more files related to your db and migration "scripts"
+ - public contains static files
+ - Gemfile and Gemfile.lock contain dependencies managed by Bundler
+
+
+Webserver looks in public directory before looking anywhere else.
+
+rails new creates a new application
+rails s runs the app
+static pages live in the public directory 
+
+
+
+
 Rails is a framework for making dynamic web applications
 Many medium and large websites use Rails because they can rapidly prototype
 
