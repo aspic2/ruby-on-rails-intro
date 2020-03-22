@@ -4,6 +4,29 @@ NOTES
 INTRODUCTION TO RAILS
 ---------------------------------------
 
+CONTROLLER AND VIEW
+
+Controllers are classes
+Controllers contain actions (Ruby methods) and orchestrate web requests
+
+Rails can quickly generate a controller and 0 or more actions with their accociated views
+
+`rails generate controller controller_name [action1 action2]``
+
+view files generate like HTML files, but use .erb extensions
+ERB is a templating library (similar to JSP) that lets you embed Ruby into your HTML
+
+Tag patterns to learn:
+<% ...ruby code %> evaluate Ruby code (e.x. instatiate a variable)
+<%= ...ruby code %> Output evaluated Ruby code
+
+What if we want to add a goodbye action to the greeter controller and also add a goodbye.html.erb to app/views/greeter directory?
+
+Summary:
+Controllers contain actions (methods)
+ERB allows you to either evaluate expressions or output an expression
+
+
 CREATE YOUR FIRST APPLICATION
 
 rails new [your_app_name]
@@ -27,7 +50,7 @@ Webserver looks in public directory before looking anywhere else.
 
 rails new creates a new application
 rails s runs the app
-static pages live in the public directory 
+static pages live in the public directory
 
 
 
