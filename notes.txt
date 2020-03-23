@@ -3,6 +3,26 @@ NOTES
 ---------------------------------------
 INTRODUCTION TO RAILS
 ---------------------------------------
+ROUTES
+
+We were missing an important piece from our goodbye logic last time.
+Before the controller can orchestrate where the web request goes, the web request needs to get routed to the Controller
+The route for hello was auto generated when we used rails g controller
+
+All routes need to be specified either through rails generators or manually in the config/routes.rb file.
+
+Rake is Ruby's build language (Ruby mAKE)
+It does not use XML. It's entirely Ruby
+Rails uses rake to automate app-related tasks
+ - Database, running tests, etc.
+ See all tasks that your app's rake supports.
+   - rake --tasks
+   - rake --describe task_name
+
+Summary router directs the request to the right controller
+
+rake routes lets you see which routes are currently defined in your application 
+
 
 CONTROLLER AND VIEW
 
