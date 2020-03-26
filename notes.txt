@@ -4,7 +4,63 @@ NOTES
 INTRODUCTION TO RAILS
 ---------------------------------------
 
-HELPERS 
+----------------
+BUILDING A RUBY ON RAILS APPLICATION
+----------------
+
+INTRODUCTION TO HTTParty
+
+gem is the package manager that comes with Ruby
+gem list httparty
+gem install httparty
+gem list httparty -d  <-- gives more details
+
+Simple web services implemented using HTTP (and principles of REST) that:
+  1. Have a base URI
+  2. Support a data exchange format like XML or JSON
+  3. Support a set of HTTP operations (GET, POST, etc.)
+
+HTTParty is a RESTful web services client (like a browser is)
+Automatic parsing of JSON and XML into Ruby hashes
+Provides support for:
+  basic http authentication
+  default request query parameters
+
+(Install first) include HTTParty module, and you are good to go
+
+You can specify:
+    base_uri for your requests
+    default_params (API developer key for example)
+    format to tell it which formatt the data is in
+
+
+Hazins uses JSONView Browser Plugin to display JSON
+
+JSON responses are converted to Ruby hashes
+
+`require 'httparty'
+require 'pp'
+
+class Coursera
+  include HTTParty
+
+  base_uri 'https://api.coursera.org/api/catalog.v1/courses'
+  # these are params you want to include in every request
+  default_params fields: "smallIcon,shortDescription", q: "search"
+  format :json
+
+  # you can have multiple methods. The settings above apply for all methods
+  # in the class
+  def self.for term
+    get("", query: {query: term})["elements"]
+  end
+end
+
+pp Coursera.for "python"
+`
+
+
+HELPERS
 
 What are helpers and why are they helpful
 Why would you want to use a link_to Rails helper
