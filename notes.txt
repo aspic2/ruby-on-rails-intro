@@ -8,6 +8,54 @@ INTRODUCTION TO RAILS
 BUILDING A RUBY ON RAILS APPLICATION
 ----------------
 
+BUNDLER
+
+bundler.io
+
+Bundler lets you specify gems (in the Gemfile) for your Rails app
+Is the preferred way to manage gems dependencies
+
+Run bundle install or simply bundle after specifying a new gem in the Gemfile
+Run bundle update to modify the version of an installed gem
+
+You can instruct Rails (through the Gemfile) to only load certain gems in specific environments
+
+`group :development, :test do
+  # Call 'byebug' anywhere in the code stop execution and get a debugger console
+  gem 'byebug'
+
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+
+  # Spring speeds up development by keeping your application running in the background
+  gem 'spring'
+end
+`
+
+Which version of a gem gets installed?
+If you don't specify, the latest gets installed.
+You can specify a specific version
+gem "nokogiri"
+gem "rails", "3.0.0.beta3"
+gem "rack", ">=1.0"
+gem "thin", ">= 1.1", "< 2.0"
+gem "thin", "~>1.1"
+
+~> Pessimistic version constraint gives you a whole number upper limit on which version to use
+">= 1.1", "< 2.0" is the same as "~> 1.1"
+
+Occasionally the require statement name is different than the gem name
+
+You can even use a different version of Rails in your app with bundler update
+
+Gemfile.lock has the exact versions of each gem you are using
+
+Bundle exec? No idea what it does.
+
+Bundler manages gem dependencies
+Bundler loads gems on application startup
+
+
 INTRODUCTION TO HTTParty
 
 gem is the package manager that comes with Ruby

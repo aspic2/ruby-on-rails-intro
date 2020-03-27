@@ -1,19 +1,10 @@
-require 'httparty'
-require 'pp'
+group :development, :test do
+  # Call 'byebug' anywhere in the code stop execution and get a debugger console
+  gem 'byebug'
 
-class Coursera
-  include HTTParty
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
 
-  base_uri 'https://api.coursera.org/api/catalog.v1/courses'
-  # these are params you want to include in every request
-  default_params fields: "smallIcon,shortDescription", q: "search"
-  format :json
-
-  # you can have multiple methods. The settings above apply for all methods
-  # in the class
-  def self.for term
-    get("", query: {query: term})["elements"]
-  end
+  # Spring speeds up development by keeping your application running in the background
+  gem 'spring'
 end
-
-pp Coursera.for "python"
