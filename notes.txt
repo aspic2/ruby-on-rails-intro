@@ -8,10 +8,44 @@ INTRODUCTION TO RAILS
 BUILDING A RUBY ON RAILS APPLICATION
 ----------------
 
+CSS, Parameters & Root Path
+
+Add basic styling to our view
+Make the app more dynamic with a request parameter
+Routing with a root path
+
+views/layout/application.html.erb serves as view's container (unless overridden)
+
+It looks like Rails regularly uses Sass (SCSS)
+
+It would be nice to specify the search term
+use params "Hash" to retrieve the value
+If no value is found, null is return
+
+What if we wanted the root path to go to the index action?
+    Just modify routes.rb
+
+
+Minor CSS changes can dramatically enhance the app
+params helper parses request parameters
+Easy to change the root path by tweaking routes.rb 
+
+
+RAILS & HTTParty INTEGRATION
+
+Add HTTParty into the Gemfile, and specify the version
+turn off the server
+run bundle
+
+By convention, controllers are named plural and model is named singular
+Also, note that HTTParty does not ahve to be required (thanks, Bundler!)
+
+Files under app directory are automatically required
+
+
 BUNDLER
 
 bundler.io
-
 Bundler lets you specify gems (in the Gemfile) for your Rails app
 Is the preferred way to manage gems dependencies
 
