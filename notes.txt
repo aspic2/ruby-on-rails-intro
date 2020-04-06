@@ -4,6 +4,47 @@ NOTES
 INTRODUCTION TO RAILS
 ---------------------------------------
 
+--------------------
+Deploying to Heroku and Verification
+--------------------
+
+Heroku is a Platform as a Service (PaaS)
+
+free account on heroku.com
+download a toolbelt (toolbelt.heroku.com) CLI tool to manage your heroku apps
+Heroku uses Postgres and recommends rails_12factor gem
+
+Put sqlite gem into development group and "heroku" gems in production
+
+Tells bundler and heroku which gems to use
+
+`gem 'sqlite3', group: :development`
+
+`group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end`
+
+rerun bundle after this
+
+`heroku create [app name]`
+
+heroku creates a remote git repository for you
+
+`git push heroku master`
+
+Make sure that the top level directory of your git repo contains app directory and other Rails files and directories!
+
+
+`heroku open` will open your application in a browser
+
+Summary:
+    Sign up for a Heroku acocunt and download the toolbelt
+    Don't forget to change the Gemfile
+
+    
+
+
 ----------------
 BUILDING A RUBY ON RAILS APPLICATION
 ----------------
@@ -28,7 +69,7 @@ What if we wanted the root path to go to the index action?
 
 Minor CSS changes can dramatically enhance the app
 params helper parses request parameters
-Easy to change the root path by tweaking routes.rb 
+Easy to change the root path by tweaking routes.rb
 
 
 RAILS & HTTParty INTEGRATION
