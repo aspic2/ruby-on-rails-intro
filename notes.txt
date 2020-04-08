@@ -8,6 +8,16 @@ INTRODUCTION TO RAILS
 Deploying to Heroku and Verification
 --------------------
 
+BLACKBOX TESTING
+
+You don't care what language your program is written in. We treat it as a black box
+
+Capybara is test framework for websites that simulates how a real user would interact with your app.
+
+
+
+
+
 Heroku is a Platform as a Service (PaaS)
 
 free account on heroku.com
@@ -42,7 +52,7 @@ Summary:
     Sign up for a Heroku acocunt and download the toolbelt
     Don't forget to change the Gemfile
 
-    
+
 
 
 ----------------
